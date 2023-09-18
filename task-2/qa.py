@@ -11,19 +11,19 @@ class QA:
         openai.api_key = self.api_key
 
     def ask(self, user_input):
-        # Kullanıcının mesajını mesajlar listesine ekler.
+        # Adds the user's message to the messages list.
         self.messages.append({"role": "user", "content": user_input})
 
-        # Mesajları API'ye gönderir ve modelden yanıt alır.
+        # It sends messages to the API and receives a response from the model.
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=self.messages
         )
 
-        # Modelin yanıtını alır.
+        # Gets the model's response.
         bot_reply = response.choices[-1].message["content"]
 
-        # Modelin yanıtını mesajlar listesine ekler.
+        # Adds the model's response to the list of messages.
         self.messages.append({"role": "assistant", "content": bot_reply})
 
         return bot_reply
@@ -42,7 +42,7 @@ def main():
         return False
 
 def get_user_input():
-    # Kullanıcı girdisini alır.
+    # Takes user input.
     user_input = incoming_question
     return user_input
 
