@@ -1,0 +1,1 @@
+incoming_question = "Bana bir bilmece söyler misin."
